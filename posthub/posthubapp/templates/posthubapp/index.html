@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}
+Posthub-Homepage
+{% endblock  %}
+{% block content %}
+   <!-- Hero section -->
+<section class="bg-light text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Welcome to Posthub</h1>
+    <p class="lead mb-4">Share your posts, discover trending content, and connect with the community.</p>
+    <a href="{% url 'register' %}" class="btn btn-primary btn-lg me-2">Get Started</a>
+    <a href="{% url 'view_post' %}" class="btn btn-outline-primary btn-lg">Explore Posts</a>
+  </div>
+</section>
+
+ 
+
+{% endblock  %}

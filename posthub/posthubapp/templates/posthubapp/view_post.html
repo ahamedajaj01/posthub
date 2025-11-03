@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block title %} Posthub- viewpost {% endblock %}
+{% block content %}
+<a href="{% url 'create_post' %}" class="btn btn-primary my-2 mx-4">
+  + Create Post
+</a>
+
+<div class="container mt-5">
+  <h1 class="mb-4">Your feed</h1>
+  {% if posts %}
+  <div class="row">
+    {% for post in posts %}
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        {% if post.image %}
+        <img
+          src="{{ post.image.url }}"
+          class="card-img-top"
+          alt="{{ post.title }}"
+        />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <p class="text-muted small">
+            By: {{ post.author.username }} on {{ post.created_at|date:"M d, Y
+            H:i" }}
+          </p>
+
+          {% if user.is_authenticated and post.author == user %}
+          <div class="mt-2">
+            <a
+              href="{% url 'edit_post' post.id %}"
+              class="btn btn-sm btn-warning"
+              >Edit</a
+            >
+            <a
+              href="{% url 'delete_post' post.id %}"
+              class="btn btn-sm btn-danger"
+              >Delete</a
+            >
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No posts yet.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

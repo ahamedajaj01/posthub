@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}
+Posthub- createpost
+{% endblock  %}
+{% block content %}
+<h1>This is a create post page.</h1>
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded-4">
+        <h3 class="text-center mb-4 text-primary">
+            Create Post
+        </h3>
+        <form action="{% url 'create_post' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+             <div class="mb-3">
+        <label for="title" class="form-label">Post Title</label>
+        <input type="text" name="title" id="title" class="form-control" placeholder="Enter your post title" value="{{form.title.value|default_if_none:''}}" required>
+      </div>
+      <div class="mb-3">
+  <label for="formFileMultiple" class="form-label">Upload Image</label>
+  <input class="form-control" type="file" name="image">
+</div>
+ <div class="mb-3">
+        <label for="content" class="form-label">Post Content</label>
+        <textarea name="content" id="content" class="form-control" rows="5" placeholder="Write something amazing..." required>{{form.content.value|default_if_none:''}}</textarea>
+      </div>
+       <div class="text-center">
+        <button type="submit" class="btn btn-success px-4">Publish</button>
+        <a href="{% url 'view_post' %}" class="btn btn-secondary px-4 ms-2">Cancel</a>
+      </div>
+        </form>
+    </div>
+</div>
+{% endblock  %}

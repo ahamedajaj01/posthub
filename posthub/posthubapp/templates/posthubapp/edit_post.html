@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}
+Posthubapp- editpost
+{% endblock  %}
+{% block content %}
+<div class="container my-5">
+  <h3 class="mb-4 text-center">Edit Your Post</h3>
+
+  <form method="POST" enctype="multipart/form-data" class="mx-auto" style="max-width: 600px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center mt-3">
+      <button type="submit" class="btn btn-primary px-4">Save Changes</button>
+      <a href="{% url 'view_post' %}" class="btn btn-secondary px-4 ms-2">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock  %}

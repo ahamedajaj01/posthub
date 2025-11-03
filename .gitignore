@@ -1,0 +1,30 @@
+# Python cache files
+*.pyc
+__pycache__/
+
+# Virtual environments
+.venv/
+env/
+
+# Django database
+db.sqlite3
+
+# Django static files
+/staticfiles/
+media/
+
+# Django migrations (optional: you may want to keep them)
+/*/migrations/*.pyc
+/*/migrations/__pycache__/
+
+# IDE files
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+config.bat
+node_modules

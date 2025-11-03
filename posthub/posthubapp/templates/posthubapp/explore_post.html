@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}
+Posthub- Allposts
+{% endblock  %}
+{% block content %}
+<h3 class="text-center mt-4 fw-semibold text-primary">Welcome to the Explore Page 🌍</h3>
+<p class="text-center text-muted">Discover posts shared by our amazing community.</p>
+<div class="container mt-5">
+
+    {% if posts %}
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content }}</p>
+                    <p class="text-muted small">By: {{ post.author.username }} on {{ post.created_at|date:"M d, Y H:i" }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No posts yet.</p>
+    {% endif %}
+</div>
+{% endblock  %}
